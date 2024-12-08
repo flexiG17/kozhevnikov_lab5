@@ -2,26 +2,26 @@
 
 Поскольку задачу было уже трудно развивать до требуемого условия, функционал был расширен, а классы можно сказать "высосаны из пальца".
 
-Для наглядности создал более явный пример с машинами, расположенный в файле `SecondProgramVariant.java`
+Для наглядности создал более явный пример с машинами, расположенный в файле `SecondProgramVariant.SecondProgramVariant.java`
 
 ## Описание программы
 
-### Класс `PhysicalCalculation`
+### Класс `MyProgram.PhysicalCalculation`
 
 Этот класс является базовым классом для всех физических расчетов. Может быть использован и для иных вычислений
 
 Он содержит следующие элементы:
 
 - Неизменяемое приватное поле `result` типа double для хранения результата подсчета;
-- Конструктор `PhysicalCalculation(double result)`, инициализируещий `result`;
+- Конструктор `MyProgram.PhysicalCalculation(double result)`, инициализируещий `result`;
 - Метод `calculate()`, возвращающий результат, сохраненный в `result`;
 - Переопределенные методы `toString()` и `equals()`.
 
 ```java
-class PhysicalCalculation {
+class MyProgram.PhysicalCalculation {
     private final double result;
 
-    public PhysicalCalculation(double result) {
+    public MyProgram.PhysicalCalculation(double result) {
         this.result = result;
     }
 
@@ -42,14 +42,14 @@ class PhysicalCalculation {
         if (object == null || getClass() != object.getClass()) {
             return false;
         };
-        PhysicalCalculation currentType = (PhysicalCalculation) object;
+        MyProgram.PhysicalCalculation currentType = (MyProgram.PhysicalCalculation) object;
         return Double.compare(currentType.calculate(), calculate()) == 0;
     }
 }
 ```
 
-### Класс `CentripetalAcceleration`
-(подкласс `PhysicalCalculation`)
+### Класс `MyProgram.CentripetalAcceleration`
+(подкласс `MyProgram.PhysicalCalculation`)
 
 Класс для работы с **Центростремительным ускорением**
 
@@ -59,11 +59,11 @@ class PhysicalCalculation {
 - Переопределяет метод `toString()` для форматирования результата до тысячных.
 
 ```java
-class CentripetalAcceleration extends PhysicalCalculation {
+class MyProgram.CentripetalAcceleration extends MyProgram.PhysicalCalculation {
     private final double speed;
     private final double radius;
 
-    public CentripetalAcceleration(double speed, double radius) {
+    public MyProgram.CentripetalAcceleration(double speed, double radius) {
         super(Math.pow(speed, 2) / radius);
         this.speed = speed;
         this.radius = radius;
@@ -81,8 +81,8 @@ class CentripetalAcceleration extends PhysicalCalculation {
 }
 ```
 
-### Класс `CircularVelocity `
-(подкласс `PhysicalCalculation`)
+### Класс `MyProgram.CircularVelocity `
+(подкласс `MyProgram.PhysicalCalculation`)
 
 Класс для работы с **Круговой скоростью**
 
@@ -92,11 +92,11 @@ class CentripetalAcceleration extends PhysicalCalculation {
 - Переопределяет метод `toString()` для форматирования результата до тысячных.
 
 ```java
-class CircularVelocity extends PhysicalCalculation {
+class MyProgram.CircularVelocity extends MyProgram.PhysicalCalculation {
     private final double radius;
     private final double period;
 
-    public CircularVelocity(double radius, double period) {
+    public MyProgram.CircularVelocity(double radius, double period) {
         super((2 * Math.PI * radius) / period);
         this.radius = radius;
         this.period = period;
@@ -120,7 +120,7 @@ class CircularVelocity extends PhysicalCalculation {
 
 ## Описание программы
 
-### Класс `Car`
+### Класс `SecondProgramVariant.Car`
 
 Этот класс является базовым и универсальным классом для всех типов машин
 
@@ -130,9 +130,9 @@ class CircularVelocity extends PhysicalCalculation {
 - Метод `carSound()` выводит сообщение о том, как машина едет;
 - Переопределены методы `toString()` и `equals()` для корректного строкового представления и сравнения экземпляров класса.
 
-### Класс `ElectricCar`
+### Класс `SecondProgramVariant.ElectricCar`
 
-Класс для работы с электромобилями (подкласс Car)
+Класс для работы с электромобилями (подкласс SecondProgramVariant.Car)
 
 Он содержит следующие элементы:
 
@@ -140,9 +140,9 @@ class CircularVelocity extends PhysicalCalculation {
 - Метод `carSound()` переопределен и возвращает информацию о звуке машины;
 - Переопределены методы `toString()` и `equals()`.
 
-### Класс `GasolineCar`
+### Класс `SecondProgramVariant.GasolineCar`
 
-Класс для работы с машинами с ДВС (подкласс Car)
+Класс для работы с машинами с ДВС (подкласс SecondProgramVariant.Car)
 
 Он содержит следующие элементы:
 
@@ -150,11 +150,11 @@ class CircularVelocity extends PhysicalCalculation {
 - Метод `carSound()` переопределен и возвращает информацию о звуке машины;
 - Переопределены методы `toString()` и `equals()`.
 
-### Класс `SecondProgramVariant`
+### Класс `SecondProgramVariant.SecondProgramVariant`
 
 Основной класс для демонстрации работы классов
 
-- Создает массив `Car[]`, который содержит экземпляры классов ElectricCar и GasolineCar;
+- Создает массив `SecondProgramVariant.Car[]`, который содержит экземпляры классов SecondProgramVariant.ElectricCar и SecondProgramVariant.GasolineCar;
 - Выполняет цикл по массиву и вызывает метод `carSound()`;
 - Проверяет эквивалентность объектов с помощью метода `equals()`.
 
